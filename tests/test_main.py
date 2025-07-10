@@ -20,15 +20,18 @@ def test_valid_post():
     assert response.status_code == 200
     assert "Hello Juan Perez" in response.json()["message"]
 
+
 def test_invalid_method_get():
     response = client.get("/DevOps")
     assert response.status_code == 405
     assert response.text == "ERROR"
 
+
 def test_invalid_method_put():
     response = client.put("/DevOps")
     assert response.status_code == 405
     assert response.text == "ERROR"
+
 
 def test_invalid_apikey():
     payload = {
