@@ -5,6 +5,7 @@ client = TestClient(app)
 
 API_KEY = "2f5ae96c-b558-4c7b-a590-a501ae1c3f6c"
 
+
 def test_valid_post():
     payload = {
         "message": "This is a test",
