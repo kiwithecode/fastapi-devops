@@ -4,3 +4,4 @@ python-jose[cryptography]
 pytest
 
 flake8
+httpx
