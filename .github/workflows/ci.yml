@@ -31,6 +31,13 @@ jobs:
         run: |
           pytest --maxfail=1 --disable-warnings -q
 
+      - name: Verificar que DOCKERHUB_USERNAME está definido
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ]; then
+            echo "ERROR: El secreto DOCKERHUB_USERNAME no está configurado."
+            exit 1
+          fi
+
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-microservice:latest .
