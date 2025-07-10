@@ -19,7 +19,7 @@ async def devops_endpoint(
     if not verify_apikey(x_parse_rest_api_key, API_KEY):
         raise HTTPException(status_code=403, detail="Invalid API Key")
 
-    jwt_token = generate_jwt(payload.dict())
+    jwt_token = generate_jwt(payload.model_dump())
 
     return JSONResponse(
         content={
