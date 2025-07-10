@@ -21,12 +21,13 @@ async def devops_endpoint(
 
     jwt_token = generate_jwt(payload.model_dump())
 
-    return JSONResponse(
+    response = JSONResponse(
         content={
-            "message": f"Hello {payload.to} your message will be send",
-            "jwt": jwt_token
+            "message": f"Hello {payload.to} your message will be send"
         }
     )
+    response.headers["X-JWT-KWY"] = jwt_token
+    return response
 
 
 @app.api_route("/DevOps", methods=["GET", "PUT", "DELETE", "PATCH"])
